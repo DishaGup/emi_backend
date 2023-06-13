@@ -7,10 +7,12 @@ const express = require('express')
 const { registerRouter } = require("./Routes/user.routes")
 const { auth } = require("./Middleware/hash.middleware")
 const { calculateRouter } = require("./Routes/calculate.route")
+const { UserRouter } = require("./Routes/JobsPortal/user.route")
 const app = express()
 app.use(express.json())
 app.use(cors())
 
+app.use("/jobs",UserRouter)
 app.use("/user",registerRouter)
 app.use("/calculate",auth,calculateRouter)
 
